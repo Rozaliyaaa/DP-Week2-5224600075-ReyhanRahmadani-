@@ -6,13 +6,13 @@
 
 ## The core loop of this program represents the main gameplay flow of the card-based system. Each round follows a fixed sequence of phases:
 
-The player receives a hand of cards generated randomly.
-The system evaluates the hand value and calculates the base score.
-Modifiers are applied to produce the final score.
-Rewards (gold) are given based on the final score.
-The game state is updated (total score and gold).
-The shop is offered, allowing the player to obtain modifiers.
-The round advances, and the loop continues until all rounds are completed.
+- The player receives a hand of cards generated randomly.
+- The system evaluates the hand value and calculates the base score.
+- Modifiers are applied to produce the final score.
+- Rewards (gold) are given based on the final score.
+- The game state is updated (total score and gold).
+- The shop is offered, allowing the player to obtain modifiers.
+- The round advances, and the loop continues until all rounds are completed.
 
 This loop repeats until the game reaches the final round.
 
@@ -27,10 +27,10 @@ must always remain the same.
 ## 2. Which components must always exist for the game to function?
 The core components that must always exist are:
 
-RunSession (controls the loop)
-ScoringSystem (handles score calculation)
-RewardSystem (handles rewards)
-ShopSystem (handles the shop phase)
+- RunSession (controls the loop)
+- ScoringSystem (handles score calculation)
+- RewardSystem (handles rewards)
+- ShopSystem (handles the shop phase)
 
 ## 3. What would break if the order changes?
 If this order is changed, the game logic will break. For example, giving rewards before calculating the score would produce incorrect results, and updating the state before evaluation would lead to inconsistent behavior.
@@ -39,16 +39,19 @@ If this order is changed, the game logic will break. For example, giving rewards
 
 The mutable elements are parts of the system that can be modified without affecting the core loop:
 
-Scoring Formula
-The base score calculation in ScoringSystem (currently handValue * 10) can be changed.
-Modifiers
-The modifier system (e.g., DoubleScoreModifier) can be extended or replaced with new effects.
-Reward Calculation
-The reward formula in RewardSystem can be adjusted to change the game balance.
-Shop Configuration
-The shop behavior (cost, availability, purchase rules) can be modified independently.
+- Scoring Formula
+  The base score calculation in ScoringSystem (currently handValue * 10) can be changed.
 
-These elements are flexible because they do not change the main structure of the loop.
+- Modifiers
+  The modifier system (e.g., DoubleScoreModifier) can be extended or replaced with new effects.
+  
+- Reward Calculation
+  The reward formula in RewardSystem can be adjusted to change the game balance.
+  
+- Shop Configuration
+  The shop behavior (cost, availability, purchase rules) can be modified independently.
+
+  These elements are flexible because they do not change the main structure of the loop.
 
 # Reflection (Mandatory — 300–400 words)
 
